@@ -1,5 +1,21 @@
 # depslib dependency file v1.0
-1543402617 source:c:\users\kinia\desktop\programowanie\ksiazka adresowa obiektowo\ksiazkaadresowa.cpp
+1543534304 source:c:\users\kinia\desktop\programowanie\ksiazka adresowa obiektowo\ksiazkaadresowa.cpp
+	<iostream>
+	"KsiazkaAdresowa.h"
 
-1543407714 source:c:\users\kinia\desktop\programowanie\ksiazka adresowa obiektowo\uzytkownik.cpp
+1543444033 source:c:\users\kinia\desktop\programowanie\ksiazka adresowa obiektowo\uzytkownik.cpp
+	"Uzytkownik.h"
+
+1543534229 source:c:\users\kinia\desktop\programowanie\ksiazka adresowa obiektowo\main.cpp
+	<iostream>
+	"KsiazkaAdresowa.h"
+
+1543534304 c:\users\kinia\desktop\programowanie\ksiazka adresowa obiektowo\ksiazkaadresowa.h
+	<iostream>
+	<vector>
+	<windows.h>
+	"Uzytkownik.h"
+
+1543444032 c:\users\kinia\desktop\programowanie\ksiazka adresowa obiektowo\uzytkownik.h
+	<iostream>
 
