@@ -1,23 +1,47 @@
 # depslib dependency file v1.0
-1543535465 source:c:\users\kinia\desktop\programowanie\ksiazka adresowa obiektowo\ksiazkaadresowa.cpp
-	<iostream>
+1543668047 source:c:\users\kinia\desktop\programowanie\ksiazka adresowa obiektowo\ksiazkaadresowa.cpp
 	"KsiazkaAdresowa.h"
 
-1543444033 source:c:\users\kinia\desktop\programowanie\ksiazka adresowa obiektowo\uzytkownik.cpp
+1543536277 source:c:\users\kinia\desktop\programowanie\ksiazka adresowa obiektowo\uzytkownik.cpp
 	"Uzytkownik.h"
 
-1543534359 source:c:\users\kinia\desktop\programowanie\ksiazka adresowa obiektowo\main.cpp
+1543536277 source:c:\users\kinia\desktop\programowanie\ksiazka adresowa obiektowo\main.cpp
 	<iostream>
 	"KsiazkaAdresowa.h"
 
-1543535436 c:\users\kinia\desktop\programowanie\ksiazka adresowa obiektowo\ksiazkaadresowa.h
+1543666551 c:\users\kinia\desktop\programowanie\ksiazka adresowa obiektowo\ksiazkaadresowa.h
+	<iostream>
+	"UzytkownikMenedzer.h"
+
+1543668763 c:\users\kinia\desktop\programowanie\ksiazka adresowa obiektowo\uzytkownik.h
+	<iostream>
+
+1543698606 c:\users\kinia\desktop\programowanie\ksiazka adresowa obiektowo\uzytkownikmenedzer.h
 	<iostream>
 	<vector>
 	<windows.h>
 	<fstream>
 	<sstream>
 	"Uzytkownik.h"
+	"PlikZUzytkownikami.h"
 
-1543444032 c:\users\kinia\desktop\programowanie\ksiazka adresowa obiektowo\uzytkownik.h
+1543667989 source:c:\users\kinia\desktop\programowanie\ksiazka adresowa obiektowo\metodypomocnicze.cpp
+	"MetodyPomocnicze.h"
+
+1543668764 c:\users\kinia\desktop\programowanie\ksiazka adresowa obiektowo\metodypomocnicze.h
 	<iostream>
+	<sstream>
+
+1543698964 c:\users\kinia\desktop\programowanie\ksiazka adresowa obiektowo\plikzuzytkownikami.h
+	<iostream>
+	<vector>
+	<fstream>
+	"Uzytkownik.h"
+	"MetodyPomocnicze.h"
+
+1543698450 source:c:\users\kinia\desktop\programowanie\ksiazka adresowa obiektowo\plikzuzytkownikami.cpp
+	"PlikZUzytkownikami.h"
+
+1543698606 source:c:\users\kinia\desktop\programowanie\ksiazka adresowa obiektowo\uzytkownikmenedzer.cpp
+	"UzytkownikMenedzer.h"
 
