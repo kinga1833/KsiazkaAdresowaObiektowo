@@ -26,8 +26,8 @@ void KsiazkaAdresowa::wylogowanieUzytkownika()
 {
     uzytkownikMenedzer.wylogowanieUzytkownika();
 }
-int KsiazkaAdresowa::dodajAdresata()
+/*int KsiazkaAdresowa::dodajAdresata()
 {
     adresatMenedzer.dodajAdresata();
-}
+}*/
 

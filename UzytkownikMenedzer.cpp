@@ -120,8 +120,9 @@ void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika()
 
         }
     }
-    zapiszWszystkichUzytkownikowDoPliku();
+    plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
 }
+/*
 void UzytkownikMenedzer::zapiszWszystkichUzytkownikowDoPliku()
 {
     fstream plikTekstowy;
@@ -163,7 +164,7 @@ string UzytkownikMenedzer::zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowym
     liniaZDanymiUzytkownika += uzytkownik.pobierzHaslo() + '|';
 
     return liniaZDanymiUzytkownika;
-}
+}*/
 void UzytkownikMenedzer::wylogowanieUzytkownika()
 {
     idZalogowanegoUzytkownika = 0;

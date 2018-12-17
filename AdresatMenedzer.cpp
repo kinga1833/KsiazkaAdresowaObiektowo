@@ -5,7 +5,7 @@
     idZalogUzytkownika = uzytkownikMenedzer.logowanieUzytkownika();
 }*/
 
-int AdresatMenedzer::dodajAdresata()
+/*int AdresatMenedzer::dodajAdresata()
 {
     Adresat adresat;
 
@@ -19,7 +19,7 @@ int AdresatMenedzer::dodajAdresata()
     return ++idOstatniegoAdresata;
 }
 
-Adresat AdresatMenedzer::podajDaneNowegoAdresata()
+/*Adresat AdresatMenedzer::podajDaneNowegoAdresata()
 {
     Adresat adresat;
 
@@ -51,3 +51,4 @@ string AdresatMenedzer::wczytajLinie()
     getline(cin, wejscie);
     return wejscie;
 }
+*/
