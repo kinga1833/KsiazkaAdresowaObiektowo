@@ -18,12 +18,14 @@ class AdresatMenedzer
     PlikZAdresatami plikZAdresatami;
     MetodyPomocnicze metodyPomocnicze;
 
-    Adresat podajDaneNowegoAdresata();
+    Adresat podajDaneNowegoAdresata(int &idZalogowanegoUzytkownika);
     string wczytajLinie();
 
 public:
-    //AdresatMenedzer();
-    int dodajAdresata();
+    AdresatMenedzer();
+    int dodajAdresata(int &idZalogowanegoUzytkownika);
+    void wypiszWszystkichAdresatow();
+    void wczytajAdresatowZalogowanegoUzytkownikaZPliku();
 
 } ;
 

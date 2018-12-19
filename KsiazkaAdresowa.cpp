@@ -28,6 +28,13 @@ void KsiazkaAdresowa::wylogowanieUzytkownika()
 }
 int KsiazkaAdresowa::dodajAdresata()
 {
-    adresatMenedzer.dodajAdresata();
+    adresatMenedzer.dodajAdresata(uzytkownikMenedzer.idZalogowanegoUzytkownika);
 }
-
+int KsiazkaAdresowa::wczytajAdresatowZalogowanegoUzytkownikaZPliku()
+{
+    adresatMenedzer.wczytajAdresatowZalogowanegoUzytkownikaZPliku();
+}
+void KsiazkaAdresowa::wypiszWszystkichAdresatow()
+{
+    adresatMenedzer.wypiszWszystkichAdresatow();
+}
