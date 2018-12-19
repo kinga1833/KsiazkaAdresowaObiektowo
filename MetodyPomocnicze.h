@@ -13,5 +13,6 @@ class MetodyPomocnicze
     static string konwerjsaIntNaString(int liczba);
     //string wczytajLinie();
     string zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst);
+    static int konwersjaStringNaInt(string liczba);
 };
 #endif

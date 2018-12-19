@@ -89,7 +89,7 @@ int UzytkownikMenedzer::logowanieUzytkownika()
                     if (uzytkownicy[i].pobierzHaslo() == haslo)
                     {
                         idZalogowanegoUzytkownika = uzytkownicy[i].pobierzID();
-                        cout << endl << "Zalogowales sie." <<endl << endl;
+                        cout << endl << "Zalogowales sie."<< endl << endl;
                         system("pause");
                         return idZalogowanegoUzytkownika;
                     }
@@ -122,49 +122,6 @@ void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika()
     }
     plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
 }
-/*
-void UzytkownikMenedzer::zapiszWszystkichUzytkownikowDoPliku()
-{
-    fstream plikTekstowy;
-    string liniaZDanymiUzytkownika = "";
-    vector <Uzytkownik>::iterator itrKoniec = --uzytkownicy.end();
-    string nazwaPlikuZUzytkownikami = "Uzytkownicy.txt";
-
-    plikTekstowy.open(nazwaPlikuZUzytkownikami.c_str(), ios::out);
-
-    if (plikTekstowy.good() == true)
-    {
-        for (vector <Uzytkownik>::iterator itr = uzytkownicy.begin(); itr != uzytkownicy.end(); itr++)
-        {
-            liniaZDanymiUzytkownika = zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(*itr);
-
-            if (itr == itrKoniec)
-            {
-                plikTekstowy << liniaZDanymiUzytkownika;
-            }
-            else
-            {
-                plikTekstowy << liniaZDanymiUzytkownika << endl;
-            }
-            liniaZDanymiUzytkownika = "";
-        }
-        plikTekstowy.close();
-    }
-    else
-    {
-        cout << "Nie mozna otworzyc pliku " << nazwaPlikuZUzytkownikami << endl;
-    }
-}
-string UzytkownikMenedzer::zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(Uzytkownik uzytkownik)
-{
-    string liniaZDanymiUzytkownika = "";
-
-    liniaZDanymiUzytkownika += MetodyPomocnicze::konwerjsaIntNaString(uzytkownik.pobierzID())+ '|';
-    liniaZDanymiUzytkownika += uzytkownik.pobierzLogin() + '|';
-    liniaZDanymiUzytkownika += uzytkownik.pobierzHaslo() + '|';
-
-    return liniaZDanymiUzytkownika;
-}*/
 void UzytkownikMenedzer::wylogowanieUzytkownika()
 {
     idZalogowanegoUzytkownika = 0;
