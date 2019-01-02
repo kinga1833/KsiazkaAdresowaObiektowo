@@ -11,8 +11,7 @@ class MetodyPomocnicze
 {
     public:
     static string konwerjsaIntNaString(int liczba);
-    //string wczytajLinie();
-    string zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst);
+    static string zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst);
     static int konwersjaStringNaInt(string liczba);
 };
 #endif

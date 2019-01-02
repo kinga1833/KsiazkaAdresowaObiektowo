@@ -1,10 +1,5 @@
 #include "PlikZAdresatami.h"
 
-PlikZAdresatami::PlikZAdresatami()
-{
-    nazwaPlikuZAdresatami = "Adresaci.txt";
-}
-
 void PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat)
 {
     string liniaZDanymiAdresata = "";
@@ -23,6 +18,7 @@ void PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat)
         {
             plikTekstowy << endl << liniaZDanymiAdresata ;
         }
+        idOstatniegoAdresata++;
         plikTekstowy.close();
     }
     else
@@ -54,10 +50,10 @@ bool PlikZAdresatami::czyPlikJestPusty()
     else
         return false;
 }
-int PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(vector <Adresat> adresaci, int &idZalogowanegoUzytkownika)
+vector <Adresat> PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika)
 {
     Adresat adresat;
-    int idOstatniegoAdresata = 0;
+    vector <Adresat> adresaci;
     string daneJednegoAdresataOddzielonePionowymiKreskami = "";
     string daneOstaniegoAdresataWPliku = "";
     fstream plikTekstowy;
@@ -82,10 +78,8 @@ int PlikZAdresatami::wczytajAdresatowZalogowanegoUzytkownikaZPliku(vector <Adres
     if (daneOstaniegoAdresataWPliku != "")
     {
         idOstatniegoAdresata = pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneOstaniegoAdresataWPliku);
-        return idOstatniegoAdresata;
     }
-    else
-        return 0;
+    return adresaci;
 }
 int PlikZAdresatami::pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami)
 {
@@ -153,4 +147,8 @@ string PlikZAdresatami::pobierzLiczbe(string tekst, int pozycjaZnaku)
         pozycjaZnaku ++;
     }
     return liczba;
+}
+int PlikZAdresatami::pobierzIdOstatniegoAdresata()
+{
+    return idOstatniegoAdresata;
 }

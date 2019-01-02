@@ -2,6 +2,7 @@
 
 void UzytkownikMenedzer::rejestracjaUzytkownika()
 {
+    cout << " >>> REJESTRACJA <<< " << endl << endl;
     Uzytkownik uzytkownik = podajDaneNowegoUzytkownika();
 
     uzytkownicy.push_back(uzytkownik);
@@ -63,16 +64,11 @@ void UzytkownikMenedzer::wypiszWszystkichUzytkownikow()
         cout << uzytkownicy[i].pobierzHaslo() << endl;
     }
 }
-void UzytkownikMenedzer::wczytajUzytkownikowZPliku()
-{
-    uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
-}
 int UzytkownikMenedzer::logowanieUzytkownika()
 {
-    Uzytkownik uzytkownik;
     string login = "", haslo = "";
-
-    cout << endl << "Podaj login: ";
+    cout << ">>>  LOGOWANIE  <<<" << endl << endl;
+    cout << "Podaj login: ";
     cin >> login;
 
     while (true)
@@ -126,4 +122,14 @@ void UzytkownikMenedzer::wylogowanieUzytkownika()
 {
     idZalogowanegoUzytkownika = 0;
 }
-
+bool UzytkownikMenedzer::czyUzytkownikJestZalogowany()
+{
+    if(idZalogowanegoUzytkownika > 0)
+        return true;
+    else
+        return false;
+}
+int UzytkownikMenedzer::pobierzIdZalogowanegoUzytkownika()
+{
+    return idZalogowanegoUzytkownika;
+}
