@@ -1,9 +1,0 @@
-5|1|kaka|lama|456123258|kowa@wp.pl|lublin|
-5|1|papa|nana|kaka|lasa|as|
-5|1|lala|koma|sdad|dsaf|afs|
-5|1|jhjh|nana|lala|jaj|as|
-3|7863784|Monika|Kozak|533699654|monika@wp.pl|Lublin 87A|
-6|7863784|Natalia|Kowalska|456258159|kinkowal@wp.pl|Lublin|
-7|7863784|Kaka|Mama|jaja|lal|jajaa|
-1|7863784|Kaka|Pustak|456258789|fads|fdaf|
-1|7863784|Kama|Nana|papa|ki|kn|
