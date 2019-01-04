@@ -6,7 +6,6 @@ void AdresatMenedzer::dodajAdresata()
 
     system("cls");
     cout << " >>> DODAWANIE NOWEGO ADRESATA <<<" << endl << endl;
-    cout << "Id zalogowanego uzytkowika " << idZalogowanegoUzytkownika << endl;
     adresat = podajDaneNowegoAdresata();
 
     adresaci.push_back(adresat);
@@ -21,7 +20,6 @@ Adresat AdresatMenedzer::podajDaneNowegoAdresata()
     adresat.ustawID(plikZAdresatami.pobierzIdOstatniegoAdresata() + 1);
     adresat.ustawIdUzytkownika(idZalogowanegoUzytkownika);
 
-    cout << "Id zalogowanego uzytkowika " << adresat.pobierzIdUzytkownika() << endl;
     cout << "Podaj imie: ";
     cin >> imie;
     imie = MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(imie);
@@ -41,7 +39,6 @@ Adresat AdresatMenedzer::podajDaneNowegoAdresata()
     cin.sync();
     getline(cin, adres);
 
-    adresat.ustawIdUzytkownika(idZalogowanegoUzytkownika);
     adresat.ustawImie(imie);
     adresat.ustawNazwisko(nazwisko);
     adresat.ustawNumerTelefonu(numerTelefonu);
@@ -51,19 +48,6 @@ Adresat AdresatMenedzer::podajDaneNowegoAdresata()
     return adresat;
 }
 
-/*void AdresatMenedzer::wypiszWszystkichAdresatow()
-{
-    for (int i = 0; i< adresaci.size(); i++)
-    {
-        cout << adresaci[i].pobierzID() << endl;
-        cout << adresaci[i].pobierzIdUzytkownika() << endl;
-        cout << adresaci[i].pobierzImie() << endl;
-        cout << adresaci[i].pobierzNazwisko() << endl;
-        cout << adresaci[i].pobierzNumerTelefonu() << endl;
-        cout << adresaci[i].pobierzEmail() << endl;
-        cout << adresaci[i].pobierzAdres() << endl;
-    }
-}*/
 void AdresatMenedzer::wypiszWszystkichAdresatow()
 {
     system ("cls");
@@ -87,4 +71,74 @@ void AdresatMenedzer::wyswietlDaneAdresata(Adresat adresat)
     cout << adresat.pobierzNumerTelefonu() << endl;
     cout << adresat.pobierzEmail() << endl;
     cout << adresat.pobierzAdres() << endl;
+}
+void AdresatMenedzer::wyszukajAdresatowPoImieniu()
+{
+    string imiePoszukiwanegoAdresata = "";
+    int iloscAdresatow = 0;
+
+    system("cls");
+    if (!adresaci.empty())
+    {
+        cout << ">>> WYSZUKIWANIE ADRESATOW O IMIENIU <<<" << endl << endl;
+
+        cout << "Wyszukaj adresatow o imieniu: ";
+        //imiePoszukiwanegoAdresata = MetodyPomocnicze::wczytajLinie();
+        cin >> imiePoszukiwanegoAdresata;
+        imiePoszukiwanegoAdresata = MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(imiePoszukiwanegoAdresata);
+
+        for (vector <Adresat>::iterator  itr = adresaci.begin(); itr != adresaci.end(); itr++)
+        {
+            if (itr -> pobierzImie()== imiePoszukiwanegoAdresata)
+            {
+                wyswietlDaneAdresata(*itr);
+                iloscAdresatow++;
+            }
+        }
+        wyswietlIloscWyszukanychAdresatow(iloscAdresatow);
+    }
+    else
+    {
+        cout << endl << "Ksiazka adresowa jest pusta" << endl << endl;
+    }
+    cout << endl;
+    system("pause");
+}
+void AdresatMenedzer::wyszukajAdresatowPoNazwisku()
+{
+    string nazwiskoPoszukiwanegoAdresata;
+    int iloscAdresatow = 0;
+
+    system("cls");
+    if (!adresaci.empty())
+    {
+        cout << ">>> WYSZUKIWANIE ADRESATOW O NAZWISKU <<<" << endl << endl;
+
+        cout << "Wyszukaj adresatow o nazwisku: ";
+        nazwiskoPoszukiwanegoAdresata = MetodyPomocnicze::wczytajLinie();
+        nazwiskoPoszukiwanegoAdresata = MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(nazwiskoPoszukiwanegoAdresata);
+
+        for (vector <Adresat>::iterator itr = adresaci.begin(); itr != adresaci.end(); itr++)
+        {
+            if (itr -> pobierzNazwisko() == nazwiskoPoszukiwanegoAdresata)
+            {
+                wyswietlDaneAdresata(*itr);
+                iloscAdresatow++;
+            }
+        }
+         wyswietlIloscWyszukanychAdresatow(iloscAdresatow);
+    }
+    else
+    {
+        cout << endl << "Ksiazka adresowa jest pusta." << endl << endl;
+    }
+    cout << endl;
+    system("pause");
+}
+void AdresatMenedzer::wyswietlIloscWyszukanychAdresatow(int iloscAdresatow)
+{
+    if (iloscAdresatow == 0)
+        cout << endl << "W ksiazce adresowej nie ma adresatow z tymi danymi." << endl;
+    else
+        cout << endl << "Ilosc adresatow w ksiazce adresowej wynosi: " << iloscAdresatow << endl << endl;
 }

@@ -29,5 +29,7 @@ public:
 
     int dodajAdresata();
     void wypiszWszystkichAdresatow();
+    void wyszukajAdresatowPoImieniu();
+    void wyszukajAdresatowPoNazwisku();
 
 };
