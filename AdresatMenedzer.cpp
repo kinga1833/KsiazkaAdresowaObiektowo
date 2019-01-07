@@ -208,13 +208,153 @@ char AdresatMenedzer::wczytajZnak()
     }
     return znak;
 }
-/*string AdresatMenedzer::pobierzLiczbe(string tekst, int pozycjaZnaku)
+void AdresatMenedzer::edytujAdresata()
 {
-    string liczba = "";
-    while(isdigit(tekst[pozycjaZnaku]) == true)
+    system("cls");
+    Adresat adresat;
+    int idEdytowanegoAdresata = 0;
+    int numerLiniiEdytowanegoAdresata = 0;
+    string liniaZDanymiAdresata = "";
+
+    cout << ">>> EDYCJA WYBRANEGO ADRESATA <<<" << endl << endl;
+    idEdytowanegoAdresata = podajIdWybranegoAdresata();
+
+    char wybor;
+    bool czyIstniejeAdresat = false;
+
+    for (vector <Adresat>::iterator itr = adresaci.begin(); itr != adresaci.end(); itr++)
     {
-        liczba += tekst[pozycjaZnaku];
-        pozycjaZnaku ++;
+        if (itr -> pobierzID() == idEdytowanegoAdresata)
+        {
+            czyIstniejeAdresat = true;
+            wybor = wybierzOpcjeZMenuEdycja();
+
+            switch (wybor)
+            {
+            case '1':
+                cout << "Podaj nowe imie: ";
+                itr -> ustawImie(wczytajLinie());
+                zaktualizujDaneEdytowanegoAdresata(*itr, idEdytowanegoAdresata);
+                break;
+            case '2':
+                cout << "Podaj nowe nazwisko: ";
+                itr -> ustawNazwisko(wczytajLinie());
+                zaktualizujDaneEdytowanegoAdresata(*itr, idEdytowanegoAdresata);
+                break;
+            case '3':
+                cout << "Podaj nowy numer telefonu: ";
+                itr -> ustawNumerTelefonu(wczytajLinie());
+                zaktualizujDaneEdytowanegoAdresata(*itr, idEdytowanegoAdresata);
+                break;
+            case '4':
+                cout << "Podaj nowy email: ";
+                itr -> ustawEmail(wczytajLinie());
+                zaktualizujDaneEdytowanegoAdresata(*itr, idEdytowanegoAdresata);
+                break;
+            case '5':
+                cout << "Podaj nowy adres zamieszkania: ";
+                itr -> ustawAdres(wczytajLinie());
+                zaktualizujDaneEdytowanegoAdresata(*itr, idEdytowanegoAdresata);
+                break;
+            case '6':
+                cout << endl << "Powrot do menu uzytkownika" << endl << endl;
+                break;
+            default:
+                cout << endl << "Nie ma takiej opcji w menu! Powrot do menu uzytkownika." << endl << endl;
+                break;
+            }
+        }
     }
-    return liczba;
+    if (czyIstniejeAdresat == false)
+    {
+        cout << endl << "Nie ma takiego adresata." << endl << endl;
+    }
+    system("pause");
+}
+char AdresatMenedzer::wybierzOpcjeZMenuEdycja()
+{
+    char wybor;
+
+    cout << endl << "   >>> MENU  EDYCJA <<<" << endl;
+    cout << "---------------------------" << endl;
+    cout << "Ktore dane zaktualizowac: " << endl;
+    cout << "1 - Imie" << endl;
+    cout << "2 - Nazwisko" << endl;
+    cout << "3 - Numer telefonu" << endl;
+    cout << "4 - Email" << endl;
+    cout << "5 - Adres" << endl;
+    cout << "6 - Powrot " << endl;
+    cout << endl << "Twoj wybor: ";
+    wybor = wczytajZnak();
+
+    return wybor;
+}
+string AdresatMenedzer::wczytajLinie()
+{
+    string wejscie = "";
+    getline(cin, wejscie);
+    return wejscie;
+}
+string AdresatMenedzer::zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst)
+{
+    if (!tekst.empty())
+    {
+        transform(tekst.begin(), tekst.end(), tekst.begin(), ::tolower);
+        tekst[0] = toupper(tekst[0]);
+    }
+    return tekst;
+}
+void AdresatMenedzer::zaktualizujDaneEdytowanegoAdresata(Adresat adresat, int idEdytowanegoAdresata)
+{
+    int numerLiniiEdytowanegoAdresata = 0;
+    string liniaZDanymiAdresata = "";
+
+    numerLiniiEdytowanegoAdresata = plikZAdresatami.zwrocNumerLiniiSzukanegoAdresata(idEdytowanegoAdresata);
+    liniaZDanymiAdresata = zamienDaneAdresataNaLinieZDanymiOddzielonaPionowymiKreskami(adresat);
+    plikZAdresatami.edytujWybranaLinieWPliku(numerLiniiEdytowanegoAdresata, liniaZDanymiAdresata);
+
+    cout << endl << "Dane zostaly zaktualizowane." << endl << endl;
+}
+/*int AdresatMenedzer::zwrocNumerLiniiSzukanegoAdresata(int idAdresata)
+{
+    bool czyIstniejeAdresat = false;
+    int numerLiniiWPlikuTekstowym = 1;
+    string daneJednegoAdresataOddzielonePionowymiKreskami = "";
+    fstream plikTekstowy;
+    plikTekstowy.open(nazwaPlikuZAdresatami.c_str(), ios::in);
+
+    if (plikTekstowy.good() == true && idAdresata != 0)
+    {
+        while(getline(plikTekstowy, daneJednegoAdresataOddzielonePionowymiKreskami))
+        {
+            if(idAdresata == pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(daneJednegoAdresataOddzielonePionowymiKreskami))
+            {
+                czyIstniejeAdresat = true;
+                plikTekstowy.close();
+                return numerLiniiWPlikuTekstowym;
+            }
+            else
+                numerLiniiWPlikuTekstowym++;
+        }
+        if (czyIstniejeAdresat = false)
+        {
+            plikTekstowy.close();
+            return 0;
+        }
+    }
+    return 0;
 }*/
+string AdresatMenedzer::zamienDaneAdresataNaLinieZDanymiOddzielonaPionowymiKreskami(Adresat adresat)
+{
+    string liniaZDanymiAdresata = "";
+
+    liniaZDanymiAdresata += MetodyPomocnicze::konwerjsaIntNaString(adresat.pobierzID()) + '|';
+    liniaZDanymiAdresata += MetodyPomocnicze::konwerjsaIntNaString(adresat.pobierzIdUzytkownika()) + '|';
+    liniaZDanymiAdresata += adresat.pobierzImie() + '|';
+    liniaZDanymiAdresata += adresat.pobierzNazwisko() + '|';
+    liniaZDanymiAdresata += adresat.pobierzNumerTelefonu()+ '|';
+    liniaZDanymiAdresata += adresat.pobierzEmail() + '|';
+    liniaZDanymiAdresata += adresat.pobierzAdres() + '|';
+
+    return liniaZDanymiAdresata;
+}

@@ -9,7 +9,7 @@ int main()
     //ksiazkaAdresowa.rejestracjaUzytkownika();
     ksiazkaAdresowa.logowanieUzytkownika();
     //ksiazkaAdresowa.wyszukajAdresatowPoNazwisku();
-    ksiazkaAdresowa.usunAdresata();
+    ksiazkaAdresowa.edytujAdresata();
     ksiazkaAdresowa.wypiszWszystkichAdresatow();
 
     return 0;

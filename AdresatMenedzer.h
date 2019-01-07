@@ -20,7 +20,12 @@ class AdresatMenedzer
     void wyswietlIloscWyszukanychAdresatow(int iloscAdresatow);
     int podajIdWybranegoAdresata();
     char wczytajZnak();
-    //string pobierzLiczbe(string tekst, int pozycjaZnaku);
+    char wybierzOpcjeZMenuEdycja();
+    string wczytajLinie();
+    string zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst);
+    void zaktualizujDaneEdytowanegoAdresata(Adresat adresat, int idEdytowanegoAdresata);
+    //int zwrocNumerLiniiSzukanegoAdresata(int idAdresata);
+    string zamienDaneAdresataNaLinieZDanymiOddzielonaPionowymiKreskami(Adresat adresat);
 
 public:
     AdresatMenedzer(string nazwaPlikuZAdresatami, int IDZALOGOWANEGOUZYTKOWNIKA)
@@ -33,6 +38,7 @@ public:
     void wyszukajAdresatowPoImieniu();
     void wyszukajAdresatowPoNazwisku();
     int usunAdresata();
+    void edytujAdresata();
 
 };
 #endif
