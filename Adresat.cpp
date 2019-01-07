@@ -8,7 +8,7 @@ void Adresat::ustawID (int noweID)
 void Adresat::ustawIdUzytkownika (int noweIdUzytkownika)
 {
     if (noweIdUzytkownika >=0);
-    id = noweIdUzytkownika;
+    idUzytkownika = noweIdUzytkownika;
 }
 void Adresat::ustawImie (string noweImie)
 {

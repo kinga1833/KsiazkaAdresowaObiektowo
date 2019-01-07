@@ -18,6 +18,9 @@ class AdresatMenedzer
     Adresat podajDaneNowegoAdresata();
     void wyswietlDaneAdresata(Adresat adresat);
     void wyswietlIloscWyszukanychAdresatow(int iloscAdresatow);
+    int podajIdWybranegoAdresata();
+    char wczytajZnak();
+    //string pobierzLiczbe(string tekst, int pozycjaZnaku);
 
 public:
     AdresatMenedzer(string nazwaPlikuZAdresatami, int IDZALOGOWANEGOUZYTKOWNIKA)
@@ -29,7 +32,8 @@ public:
     void wypiszWszystkichAdresatow();
     void wyszukajAdresatowPoImieniu();
     void wyszukajAdresatowPoNazwisku();
+    int usunAdresata();
 
-} ;
-
+};
 #endif
+

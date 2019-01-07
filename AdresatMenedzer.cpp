@@ -47,7 +47,6 @@ Adresat AdresatMenedzer::podajDaneNowegoAdresata()
 
     return adresat;
 }
-
 void AdresatMenedzer::wypiszWszystkichAdresatow()
 {
     system ("cls");
@@ -83,7 +82,6 @@ void AdresatMenedzer::wyszukajAdresatowPoImieniu()
         cout << ">>> WYSZUKIWANIE ADRESATOW O IMIENIU <<<" << endl << endl;
 
         cout << "Wyszukaj adresatow o imieniu: ";
-        //imiePoszukiwanegoAdresata = MetodyPomocnicze::wczytajLinie();
         cin >> imiePoszukiwanegoAdresata;
         imiePoszukiwanegoAdresata = MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(imiePoszukiwanegoAdresata);
 
@@ -115,7 +113,7 @@ void AdresatMenedzer::wyszukajAdresatowPoNazwisku()
         cout << ">>> WYSZUKIWANIE ADRESATOW O NAZWISKU <<<" << endl << endl;
 
         cout << "Wyszukaj adresatow o nazwisku: ";
-        nazwiskoPoszukiwanegoAdresata = MetodyPomocnicze::wczytajLinie();
+        cin >> nazwiskoPoszukiwanegoAdresata;
         nazwiskoPoszukiwanegoAdresata = MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(nazwiskoPoszukiwanegoAdresata);
 
         for (vector <Adresat>::iterator itr = adresaci.begin(); itr != adresaci.end(); itr++)
@@ -126,7 +124,7 @@ void AdresatMenedzer::wyszukajAdresatowPoNazwisku()
                 iloscAdresatow++;
             }
         }
-         wyswietlIloscWyszukanychAdresatow(iloscAdresatow);
+        wyswietlIloscWyszukanychAdresatow(iloscAdresatow);
     }
     else
     {
@@ -142,3 +140,81 @@ void AdresatMenedzer::wyswietlIloscWyszukanychAdresatow(int iloscAdresatow)
     else
         cout << endl << "Ilosc adresatow w ksiazce adresowej wynosi: " << iloscAdresatow << endl << endl;
 }
+int AdresatMenedzer::usunAdresata()
+{
+    int idUsuwanegoAdresata = 0;
+    int numerLiniiUsuwanegoAdresata = 0;
+
+    system("cls");
+    cout << ">>> USUWANIE WYBRANEGO ADRESATA <<<" << endl << endl;
+    idUsuwanegoAdresata = podajIdWybranegoAdresata();
+
+    char znak;
+    bool czyIstniejeAdresat = false;
+
+    for (vector <Adresat>::iterator itr = adresaci.begin(); itr != adresaci.end(); itr++)
+    {
+        if (itr -> pobierzID() == idUsuwanegoAdresata)
+        {
+            czyIstniejeAdresat = true;
+            cout << endl << "Potwierdz naciskajac klawisz 't': ";
+            znak = wczytajZnak();
+            if (znak == 't')
+            {
+                numerLiniiUsuwanegoAdresata = plikZAdresatami.zwrocNumerLiniiSzukanegoAdresata(idUsuwanegoAdresata);
+                plikZAdresatami.usunWybranaLinieWPliku(numerLiniiUsuwanegoAdresata);
+                itr = adresaci.erase(itr);
+                cout << endl << endl << "Szukany adresat zostal USUNIETY" << endl << endl;
+                system("pause");
+                return idUsuwanegoAdresata;
+            }
+            else
+            {
+                cout << endl << endl << "Wybrany adresat NIE zostal usuniety" << endl << endl;
+                system("pause");
+                return 0;
+            }
+        }
+    }
+    if (czyIstniejeAdresat == false)
+    {
+        cout << endl << "Nie ma takiego adresata w ksiazce adresowej" << endl << endl;
+        system("pause");
+    }
+    return 0;
+}
+int AdresatMenedzer::podajIdWybranegoAdresata()
+{
+    int idWybranegoAdresata = 0;
+    cout << "Podaj numer ID Adresata: ";
+    cin >> idWybranegoAdresata;
+    return idWybranegoAdresata;
+}
+char AdresatMenedzer::wczytajZnak()
+{
+    string wejscie = "";
+    char znak  = {0};
+
+    while (true)
+    {
+        getline(cin, wejscie);
+
+        if (wejscie.length() == 1)
+        {
+            znak = wejscie[0];
+            break;
+        }
+        cout << "To nie jest pojedynczy znak. Wpisz ponownie." << endl;
+    }
+    return znak;
+}
+/*string AdresatMenedzer::pobierzLiczbe(string tekst, int pozycjaZnaku)
+{
+    string liczba = "";
+    while(isdigit(tekst[pozycjaZnaku]) == true)
+    {
+        liczba += tekst[pozycjaZnaku];
+        pozycjaZnaku ++;
+    }
+    return liczba;
+}*/
